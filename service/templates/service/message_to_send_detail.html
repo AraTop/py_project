@@ -1,0 +1,25 @@
+{% extends 'service/base.html' %}     
+{% block content %}       
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <p class="card-text">Тема письма: {{object.letter_subject}}</p> 
+                  <p class="card-text">Тело письма: {{object.letter_body}}</p>
+                  <p class="card-text">settings: {{object.settings}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='/service/message/update/{{ object.pk }}'">Edit</button>
+                      <button type="button" class="btn btn-danger" onclick="window.location.href='/service/message/delete/{{ object.pk }}'">Delete</button>
+                    </div>
+                    {% if can_start %}
+                      <button type="button" class="btn btn-success mb-9" onclick="window.location.href='/service/create_dispatch/'">Запустить</button>
+                    {% elif not_start %}
+                      <button type="button" class="btn btn-success mb-9" disabled>Завершилось</button>
+                    {% elif launched %}
+                      <button type="button" class="btn btn-success mb-9" disabled>Запущено</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}

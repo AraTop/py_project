@@ -1,0 +1,10 @@
+django
+requests
+psycopg2
+schedule
+Pillow
+apscheduler
+python-dateutil
+celery
+redis
+django-celery-beat
